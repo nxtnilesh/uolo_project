@@ -1,16 +1,71 @@
-# React + Vite
+# Users List React App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple React application that fetches users from the **DummyJSON API**, displays them in a clean UI, and supports **pagination** and **delete** functionality.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## React Compiler
+* Fetch users with pagination (5 users per page)
+* Delete a user from the list (local state only)
+* Loading and error handling
+* Modern UI with Tailwind CSS
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Screenshot
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+*(Replace the placeholder below with your actual screenshot path)*
+
+![App Screenshot](./src/screenshot/output.png)
+
+---
+
+## Installation
+
+```bash
+npm install
+```
+
+---
+
+## Run the Project
+
+```bash
+npm run dev
+```
+
+---
+
+## Tech Stack
+
+* **React** (Hooks)
+* **Tailwind CSS**
+* **DummyJSON API** for sample user data
+
+---
+
+##  Project Structure
+
+```
+src/
+ └── App.jsx         # Root component
+ └── main.jsx        # Entry file
+```
+
+---
+
+## API Used
+
+[https://dummyjson.com/users](https://dummyjson.com/users)
+
+---
+
+## How It Works
+
+1. The component fetches users based on the current page.
+2. Each page shows **5 users**.
+3. Users can be deleted locally using a simple filter.
+4. Pagination buttons allow navigating through pages.
+
+---
