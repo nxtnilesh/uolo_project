@@ -23,7 +23,6 @@ export default function UsersList() {
     try {
       const res = await fetch(
         `https://dummyjson.com/users?skip=${skip}&limit=${LIMIT}`,
-        { signal: controller?.signal }
       );
 
       if (!res.ok) throw new Error("Failed to fetch users");
