@@ -1,30 +1,39 @@
 import { useState } from "react";
 import "./App.css";
 import { useEffect } from "react";
-
+const Limit = 5;
 function App() {
   const [user, setSetUser] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [page, setPage] = useState(0);
   const [error, setError] = useState("");
-  useEffect(() => {
-    async function loadUsers() {
-      setLoading(true);
-      setError("");
-      try {
-        const res = await fetch(`https://dummyjson.com/users?skip=10&limit=10`);
-        if (!res.ok) throw new Error("Failed to fetch users");
-        const data = await res.json();
-        console.log("data", data);
 
-        setSetUser(data.users || data);
-      } catch (error) {
-        setError(error.message);
-      } finally {
-        setLoading(false);
-      }
-    }
+  useEffect(() => {
     loadUsers();
-  }, []);
+  }, [page]);
+  async function loadUsers() {
+    const skip = page * Limit;
+    setLoading(true);
+    setError("");
+    try {
+      const res = await fetch(
+        `https://dummyjson.com/users?skip=${skip}&limit=${Limit}`
+      );
+      if (!res.ok) throw new Error("Failed to fetch users");
+      const data = await res.json();
+      console.log("data", data);
+
+      setSetUser(data.users || data);
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setLoading(false);
+    }
+  }
+  function deleteUser(id) {
+    setSetUser((prev) => prev.filter((u) => u.id !== id));
+  }
+  const isLastPage = user.length < Limit;
 
   return (
     <>
@@ -38,13 +47,14 @@ function App() {
               <li key={u.id}>{u.firstName}</li>
               <li key={u.id}>{u.email}</li>
               <img src={u.image} alt="error" />
-              <button>Delete</button>
+              <button onClick={() => deleteUser(u.id)}>Delete</button>
             </div>
           ))}
         </ul>
         <div>
-          <span>Previous</span>
-          <span>Next</span>
+          <button onClick={() => setPage((p) => p - 1)}>Previous</button>
+          <span>{page}</span>
+          <button onClick={() => setPage((p) => p + 1)}>Next</button>
         </div>
       </div>
     </>
