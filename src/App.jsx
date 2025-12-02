@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./App.css";
+// import "./App.css";
 import { useEffect } from "react";
 const Limit = 5;
 function App() {
@@ -38,7 +38,7 @@ function App() {
   return (
     <>
       <div>
-        <h2>Users Listing Page</h2>
+        <h2 className="bg-red-400">Users Listing Page</h2>
         {loading && <p>Loading...</p>}
         {error && <p>{error}</p>}
         <ul>
