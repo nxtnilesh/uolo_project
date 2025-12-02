@@ -1,5 +1,4 @@
 import { useState } from "react";
-// import "./App.css";
 import { useEffect } from "react";
 const Limit = 5;
 function App() {
@@ -37,24 +36,35 @@ function App() {
 
   return (
     <>
-      <div>
-        <h2 className="bg-red-400">Users Listing Page</h2>
+      <div className="min-h-screen">
+        <h2>Users Listing Page</h2>
         {loading && <p>Loading...</p>}
         {error && <p>{error}</p>}
-        <ul>
+        <ul className="bg-gray-300 p-3">
           {user.map((u) => (
-            <div>
-              <li key={u.id}>{u.firstName}</li>
-              <li key={u.id}>{u.email}</li>
-              <img src={u.image} alt="error" />
-              <button onClick={() => deleteUser(u.id)}>Delete</button>
+            <div className="bg-green-50 rounded-2xl p-4 m-2 flex justify-between">
+              <div className="flex">
+                <img src={u.image} alt="error" className="rounded-full h-11" />
+                <div className="">
+                  <li key={u.id}>{u.firstName}</li>
+                  <li key={u.id}>{u.email}</li>
+                </div>
+              </div>
+              <span>
+                <button
+                  className="hover:bg-red-200 bg-gray-200 rounded-2xl font-light p-3 cursor-pointer"
+                  onClick={() => deleteUser(u.id)}
+                >
+                  Delete
+                </button>
+              </span>
             </div>
           ))}
         </ul>
         <div>
-          <button onClick={() => setPage((p) => p - 1)}>Previous</button>
+          <button className="bg-blue-300" onClick={() => setPage((p) => p - 1)}>Previous</button>
           <span>{page}</span>
-          <button onClick={() => setPage((p) => p + 1)}>Next</button>
+          <button className="bg-blue-300" onClick={() => setPage((p) => p + 1)}>Next</button>
         </div>
       </div>
     </>
