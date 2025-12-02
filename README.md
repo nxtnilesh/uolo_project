@@ -15,7 +15,6 @@ A simple React application that fetches users from the **DummyJSON API**, displa
 
 ## Screenshot
 
-*(Replace the placeholder below with your actual screenshot path)*
 
 ![App Screenshot](./src/screenshot/output.png)
 
